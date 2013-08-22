@@ -8,16 +8,23 @@ from lib.image_utils import *
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
-def experts():
-		# upload and store the image in memory
-		imagedata = request.files['imagedata']		
-		im = Image.open(imagedata)
+@app.route('/shannon', methods=['GET', 'POST'])
+def shannon():
+	imagedata = request.files['imagedata']		
+	im = Image.open(imagedata)
 
-		# choose the method/expert
-		expert = request.form['expert']
+	shannon = shannon_entropy(im)
 		
-		if expert == "shannon":
-			shannon = shannon_entropy(im)
+	return jsonify(stat="ok", shannon=shannon)	
+		
+		
+@app.route('/shannon/region', methods=['GET', 'POST'])
+def shannon_region():		
+	imagedata = request.files['imagedata']		
+	im = Image.open(imagedata)
+	
+	shannon_region = sliced_shannon(im)
+	return jsonify(stat="ok", shannon_region=shannon_region)
 			
-		return jsonify(stat="ok", expert=expert, shannon=shannon)
+	
+		
