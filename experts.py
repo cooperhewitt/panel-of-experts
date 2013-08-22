@@ -36,10 +36,19 @@ def shannon_region_web():
 	
 	im = Image.open(image_file)
 	shannon_region = sliced_shannon(im)
-	x = shannon_region['x'] - 100
-	y = shannon_region['y'] - 100
-	mx = shannon_region['x'] + 200
-	my = shannon_region['y'] + 200
+	
+	if shannon_region['x'] > 100:
+		x = shannon_region['x'] - 100
+	else:
+		x = shannon_region['x']
+	
+	if shannon_region['y'] > 100:
+		y = shannon_region['y'] - 100
+	else:
+		y = shannon_region['y']
+		
+	mx = x + 300
+	my = y + 300
 	
 	thumb = im.crop((x, y, mx, my))
 	
