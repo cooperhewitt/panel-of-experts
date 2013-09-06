@@ -23,7 +23,7 @@ You can then run the server locally using [foreman](http://theforeman.org/) like
 
 If you want to skip all that and you already have the dependencies installed on your system, just do:
 
-    $ gunicorn expoerts:app
+    $ gunicorn experts:app
 
 
 Dependencies
