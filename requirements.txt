@@ -7,3 +7,4 @@ distribute==0.6.31
 gunicorn==17.5
 itsdangerous==0.23
 wsgiref==0.1.2
+newrelic
