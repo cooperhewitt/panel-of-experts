@@ -10,6 +10,10 @@ from lib.shannon import *
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+	return "panel of experts"
+
 @app.route('/shannon', methods=['GET', 'POST'])
 def shannon():
 	imagedata = request.files['imagedata']		
