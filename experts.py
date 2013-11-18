@@ -5,6 +5,7 @@ import Image
 import urllib2 as urllib
 import io
 import cStringIO
+import random
 
 from lib.shannon import *
 
@@ -72,5 +73,17 @@ def shannon_region_web():
 	img_io.seek(0)
 	return send_file(img_io, mimetype='image/jpeg')
 			
+@app.route('/random/region', methods=['GET', 'POST'])
+def random_region():	
+	imagedata = request.files['imagedata']		
+	im = Image.open(imagedata)
 	
+	(width, height) = im.size
+	
+	x = random.randint(0, width)
+	y = random.randint(0, height)
+	
+	random_region = {'x':x, 'y':y}
+	
+	return jsonify(stat="ok" , random_region=random_region)
 		

@@ -82,3 +82,22 @@ I've also added a tool to let you play with this in your web browser. This lets 
     http://0.0.0.0:5000/shannon/region/web?url=http://somewebsite.com/someimage.jpg
 
 And if you'd like to try it right now, it's up on [Heroku](http://panel-of-experts.herokuapp.com/shannon/region/web?url=http://images.collection.cooperhewitt.org/44047_34b5838a8cd2a176_b.jpg)
+
+Random Regions
+---
+
+There is a fairly dumb method called random_region. This simply returns some JSON in a similar format to the other experts on the panel to indicate a "random" spot in an image. I say it's dumb, because it's just finding a random pixel in the image and anyone could easily do that. But, I wanted to continue with the notion of an "API" and I do sort of consider random to be one of the experts.
+
+To use it, just like the rest:
+
+    $ curl -F imagedata=@/path/to/your/file.jpg http://0.0.0.0:5000/random/region
+
+And get back some JSON like:
+
+    {
+	  "random_region": {
+	    "x": 3287, 
+	    "y": 1946
+	  }, 
+	  "stat": "ok"
+	}
