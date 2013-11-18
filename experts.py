@@ -41,6 +41,10 @@ def shannon_region_web():
 	im = Image.open(image_file)
 	shannon_region = sliced_shannon(im)
 	
+	(width, height) = im.size
+		
+	# for the top and left edges
+	
 	if shannon_region['x'] > 100:
 		x = shannon_region['x'] - 100
 	else:
@@ -50,6 +54,13 @@ def shannon_region_web():
 		y = shannon_region['y'] - 100
 	else:
 		y = shannon_region['y']
+
+	# for the bottom and right edges -- aka the dumbest code, ever...
+	if shannon_region['x'] > width - 200:
+		x = x - 100
+		
+	if shannon_region['y'] > height - 200:
+		y = y - 100
 		
 	mx = x + 300
 	my = y + 300
